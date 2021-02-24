@@ -1,0 +1,92 @@
+@keyframes remove{
+    0%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+    }
+}
+.draggableItem{
+    cursor: move;
+    margin-top: 10px;
+    animation-name: remove;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+#head{
+    /* margin-top: 15px 0 15px 30px; */
+    justify-items: center;
+    background-color:aliceblue;
+    width: 800px;
+    height: 250px;
+    /* margin-bottom: 30px; */
+    
+}
+#container{
+    position: relative;
+}
+#headItems{
+   padding-top: 30px;
+   padding: 10px;
+}
+#headText{
+    margin-bottom: 0;
+    
+}
+#spanText{
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+}
+#inputTask{
+    margin-bottom: 5px;
+   
+}
+#inputText{
+    margin-top: 10px;
+    width: 500px;
+    height: 35px;
+}
+.list input:focus{
+    outline: none;
+}
+
+.noteInput{
+    margin: 5px 0 0;
+    width: 500px;
+    height: 30px;
+}
+.editBtn{
+    background-color: chartreuse;
+    margin-left: 120px;
+    height: 30px;
+    width: 60px;
+    
+}
+.deleteBtn{
+    background-color: red;
+    color: white;
+    height: 30px;
+    margin-left: 5px;
+    width: 60px;
+}
+#noteEntry{
+    display: flex;
+    flex-direction: column;
+}
+#addNote{
+    margin-top: 5px;
+    width: 150px;
+    color: white;
+    background-color: green;
+}
+
+
+/*# sourceMappingURL=/app.c328ef1a.css.map */
