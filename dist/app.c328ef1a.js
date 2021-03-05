@@ -30096,7 +30096,7 @@ var Todo = function Todo() {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    if (todo.text === '') {
+    if (todo.text === '' || !todo.text.trim()) {
       return;
     }
 
@@ -30281,7 +30281,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54471" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57292" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

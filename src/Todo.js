@@ -41,9 +41,10 @@ export const Todo =()=>{
     }
     const handleSubmit =(e)=>{
         e.preventDefault()
-        if(todo.text === ''){
+        if(todo.text === '' || !todo.text.trim()){
             return;
         } 
+
         
          const items = [...note, todo]
          setNote(items)
