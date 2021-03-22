@@ -85,8 +85,8 @@ export const Todo =()=>{
         let butttonElement = document.getElementById('edit_'+itemId)
         items.map(item =>{
            if(item.id == itemId) {
-               inputDisable = inputDisable === true ? false : true
-                //   inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
+            //    inputDisable = inputDisable === true ? false : true
+               inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
                   butttonElement.innerHTML = butttonElement.innerHTML === 'Edit' ? 'Save' : 'Edit'
            }
        })

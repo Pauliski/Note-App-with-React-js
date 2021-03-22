@@ -30083,8 +30083,8 @@ var Todo = function Todo() {
     var butttonElement = document.getElementById('edit_' + itemId);
     items.map(function (item) {
       if (item.id == itemId) {
-        inputDisable = inputDisable === true ? false : true; //   inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
-
+        //    inputDisable = inputDisable === true ? false : true
+        inputTag.hasAttribute('disabled') ? inputTag.removeAttribute('disabled') : inputTag.setAttribute('disabled', true);
         butttonElement.innerHTML = butttonElement.innerHTML === 'Edit' ? 'Save' : 'Edit';
       }
     });
@@ -30231,7 +30231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53811" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50230" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
