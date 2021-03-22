@@ -29890,59 +29890,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var LoadNote = function LoadNote(props) {
-  // let existingNote = JSON.parse(localStorage.getItem('allNote'))
-  // if(existingNote == null) existingNote = []
-  // const draggables = document.querySelectorAll('.draggableItem')
-  // const container = document.querySelector('#container')
-  // let existTodo = JSON.parse(localStorage.getItem('Todo'))
-  // if(existTodo == null) existTodo = []
-  // let [note, setNote] = useState(existTodo)
-  //console.log(itemName)
-  var onDragStart = function onDragStart(e, position) {
-    var target = e.target;
-    draggingItem.current = position;
-    console.log(target.innerHTML);
-    console.log("you just drag item with an id: ".concat(target.id, " "));
-    e.dataTransfer.setData('item', target.id); // setTimeout(()=>{
-    //     target.style.display = 'none'
-    // }, 0)
-  };
-
-  var onDragEnter = function onDragEnter(e, position) {
-    var target = e.target;
-    dragOverItem.current = position;
-    console.log(target.innerHTML);
-  }; // const onDrop = (e)=>{
-  //     e.preventDefault()
-  //     const item = e.dataTransfer.getData('item')
-  //     console.log(item)
-  //     console.log('just dropped an item')
-  //     const dragItem = document.getElementById(item)
-  //     dragItem.style.display = 'block'
-  //     console.log(e.target)
-  //     e.target.append(dragItem)
-  //     console.log(existingNote)
-  //     const Notes = existingNote
-  // let notes = existingNote.filter(note =>{
-  //     if(note.id == item){
-  //         // Notes.indexOf(note) + 1
-  //     }
-  // })
-  //}
-  // draggables.forEach(draggable => {
-  //     console.log('heloo')
-  //     draggable.addEventListener('dragstart', ()=>{
-  //         console.log('item dragged')
-  //     })
-  // })
-
-
-  var dragOver = function dragOver(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  }; // {console.log(props.tasks)}
-
-
+  var inputDisable = true;
   var loadList = props.tasks.map(function (item, i) {
     return /*#__PURE__*/_react.default.createElement("div", {
       draggable: true,
@@ -29961,7 +29909,7 @@ var LoadNote = function LoadNote(props) {
         return e.preventDefault();
       },
       className: "draggableItem"
-    }, console.log(item.id), /*#__PURE__*/_react.default.createElement("input", {
+    }, /*#__PURE__*/_react.default.createElement("input", {
       type: "text",
       key: '' + item.id,
       id: item.id + '_input',
@@ -29970,7 +29918,7 @@ var LoadNote = function LoadNote(props) {
         props.change(e.target.value, item.id);
       } //disable={!isEditing}
       ,
-      disabled: true,
+      disabled: props.inputDisable,
       className: "noteInput"
     }), /*#__PURE__*/_react.default.createElement("button", {
       key: 'edit_' + item.id,
@@ -30061,8 +30009,9 @@ var Todo = function Todo() {
   var _useState3 = (0, _react.useState)(defaultTodoState),
       _useState4 = _slicedToArray(_useState3, 2),
       todo = _useState4[0],
-      setTodo = _useState4[1]; // *** When DOM is Loaded ***
+      setTodo = _useState4[1];
 
+  var inputDisable = true; // *** When DOM is Loaded ***
 
   (0, _react.useEffect)(function () {
     var existingNote = JSON.parse(localStorage.getItem('allNote')) || [];
@@ -30120,12 +30069,11 @@ var Todo = function Todo() {
   var handleDelete = function handleDelete(event, id) {
     var check = note.filter(function (item) {
       return item.id !== id;
-    });
-    console.log(event.target.parentElement);
+    }); //console.log(event.target.parentElement)
+
     event.target.parentElement.style.animationPlayState = 'running';
     event.target.parentElement.addEventListener('animationend', function () {
-      setNote(_toConsumableArray(check));
-      event.target.parentElement.remove();
+      setNote(_toConsumableArray(check)); //event.target.parentElement.remove()
     });
   };
 
@@ -30135,7 +30083,8 @@ var Todo = function Todo() {
     var butttonElement = document.getElementById('edit_' + itemId);
     items.map(function (item) {
       if (item.id == itemId) {
-        inputTag.hasAttribute('disabled') ? inputTag.removeAttribute('disabled') : inputTag.setAttribute('disabled', true);
+        inputDisable = inputDisable === true ? false : true; //   inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
+
         butttonElement.innerHTML = butttonElement.innerHTML === 'Edit' ? 'Save' : 'Edit';
       }
     });
@@ -30187,6 +30136,7 @@ var Todo = function Todo() {
     delete: handleDelete,
     edit: handleEdit,
     tasks: note,
+    inputDisable: inputDisable,
     onDragEnd: onDragEnd,
     onDragStart: onDragStart,
     onDragEnter: onDragEnter
@@ -30281,7 +30231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63281" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53811" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

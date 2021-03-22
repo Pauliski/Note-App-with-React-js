@@ -7,6 +7,7 @@ export const Todo =()=>{
     const defaultTodoState = {text: '', id: '' };
     let [note, setNote] = useState([]);
     const [todo, setTodo] = useState(defaultTodoState)
+    var inputDisable = true;
 
     // *** When DOM is Loaded ***
     useEffect(() => {
@@ -70,11 +71,11 @@ export const Todo =()=>{
     }
     const handleDelete = (event, id)=>{
         const check = note.filter(item => item.id !== id)
-        console.log(event.target.parentElement)
+        //console.log(event.target.parentElement)
         event.target.parentElement.style.animationPlayState = 'running';
         event.target.parentElement.addEventListener('animationend', ()=>{
             setNote([...check])
-            event.target.parentElement.remove()
+            //event.target.parentElement.remove()
         })
     }
 
@@ -84,7 +85,8 @@ export const Todo =()=>{
         let butttonElement = document.getElementById('edit_'+itemId)
         items.map(item =>{
            if(item.id == itemId) {
-                  inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
+               inputDisable = inputDisable === true ? false : true
+                //   inputTag.hasAttribute('disabled')  ? inputTag.removeAttribute('disabled'): inputTag.setAttribute('disabled', true);
                   butttonElement.innerHTML = butttonElement.innerHTML === 'Edit' ? 'Save' : 'Edit'
            }
        })
@@ -138,6 +140,7 @@ export const Todo =()=>{
             delete={handleDelete} 
             edit={handleEdit} 
             tasks={note} 
+            inputDisable = {inputDisable}
             onDragEnd={onDragEnd} 
             onDragStart ={onDragStart} 
             onDragEnter={onDragEnter}

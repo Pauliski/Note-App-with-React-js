@@ -60,12 +60,15 @@
 
 .noteInput{
     margin: 5px 0 0;
-    width: 500px;
+    width: 70%;
     height: 30px;
+}
+.inputBtn{
+    width: auto;
 }
 .editBtn{
     background-color: chartreuse;
-    margin-left: 120px;
+    margin-left: 5px;
     height: 30px;
     width: 60px;
     
@@ -86,4 +89,14 @@
     width: 150px;
     color: white;
     background-color: green;
+}
+@media screen and (max-width: 475px){
+    .noteInput{
+        /* margin: 5px 0 0; */
+        width: 50%;
+        height: 30px;
+    }
+    .inputBtn{
+        margin-left: 5px;
+    }
 }
